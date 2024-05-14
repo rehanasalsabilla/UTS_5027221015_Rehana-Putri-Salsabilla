@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Laundry</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen flex justify-center items-center">
+    <div class="bg-white shadow-md rounded px-8 py-6 max-w-md">
+        <h1 class="text-3xl font-bold mb-6 text-center">Delete Laundry</h1>
+        <form action="/delete" method="post">
+            <div class="mb-4">
+                <label for="laundry_id" class="block text-gray-700 font-bold mb-2">Laundry ID:</label>
+                <input type="text" id="laundry_id" name="laundry_id" required class="form-input">
+            </div>
+            <div class="mb-4">
+                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Delete</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

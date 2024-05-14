@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Laundry by ID</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 flex justify-center items-center h-screen">
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md">
+        <h1 class="text-3xl font-bold mb-4 text-center">Read Laundry by ID</h1>
+        <form id="readForm" class="mb-4">
+            <div class="mb-4">
+                <label for="laundry_id" class="block text-gray-700 text-sm font-bold mb-2">Enter Laundry ID:</label>
+                <input type="text" id="laundry_id" name="laundry_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="flex items-center justify-between">
+                <button type="button" onclick="readLaundry()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Read</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function readLaundry() {
+            var laundryId = document.getElementById('laundry_id').value;
+            var url = '/read_by_id';
+
+            fetch(url, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        laundry_id: laundryId
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the response data here
+                    console.log(data);
+                })
+                .catch(error => {
+                    // Handle any errors here
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</body>
+
+</html>

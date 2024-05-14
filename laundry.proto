@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package laundry;
+
+message Laundry {
+    int32 id = 1;
+    string customer_name = 2;
+    string address = 3;
+    string pickup_date = 4;
+    string delivery_date = 5;
+    string status = 6;
+}
+
+message CreateRequest {
+    Laundry laundry = 1;
+}
+
+message CreateResponse {
+    string message = 1;
+}
+
+message ReadRequest {
+    int32 id = 1;
+}
+
+message ReadResponse {
+    Laundry laundry = 1;
+}
+
+message ReadAllRequest {
+    // Tidak ada parameter yang diperlukan untuk operasi membaca semua data
+}
+
+message ReadAllResponse {
+    repeated Laundry laundry = 1;
+}
+
+message UpdateRequest {
+    Laundry laundry = 1;
+}
+
+message UpdateResponse {
+    string message = 1;
+}
+
+message DeleteRequest {
+    int32 id = 1;
+}
+
+message DeleteResponse {
+    string message = 1;
+}
+
+service LaundryService {
+    rpc CreateLaundry(CreateRequest) returns (CreateResponse);
+    rpc ReadLaundry(ReadRequest) returns (ReadResponse);
+    rpc UpdateLaundry(UpdateRequest) returns (UpdateResponse);
+    rpc DeleteLaundry(DeleteRequest) returns (DeleteResponse);
+    rpc ReadAllLaundry(ReadAllRequest) returns (ReadAllResponse);
+}
